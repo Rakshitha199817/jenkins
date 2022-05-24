@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('git') {
+            steps {
+                git 'https://github.com/Rakshitha199817/jenkins.git'
+            }
+        }
+        
+        stage('compiling'){
+            steps{
+                sh 'mvn compile'
+            }
+        }
+        
+        stage('testing'){
+            steps{
+                sh 'mvn test'
+            }
+        }
+        stage('packaging'){
+            steps{
+                sh 'mvn package'
+            }
+        }
+    }
+}
+
